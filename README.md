@@ -23,5 +23,5 @@ These instructions will help you set up and run the InteriorLab project on your 
 1. **Clone the Repository**:
 
    ```sh
-   git clone https://github.com/your-username/InteriorLab.git
+   git clone https://github.com/PranavPatnaik/InteriorLab.git
    cd InteriorLab
