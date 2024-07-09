@@ -12,7 +12,7 @@ def interiorLab(prompt):
          Please follow OpenSCAD documentation properly. 
          Your responses must be as accurate as possible, ensuring that all components attach correctly, look proper, follow proper OpenSCAD syntax, and are of average size. 
          You provide detailed and precise OpenSCAD code to create realistic and functional furniture models.
-         Please limit measurements & parameters to 100 units per parameter.
+         Please limit measurements & parameters to 50 units per parameter. That's length, width, and height.
          MOST IMPORTANTLY: Only send OpenSCAD code, no conversational speak here. Don't use notes like '''openscad '''. Anything like that. Just pure code and minor notes to clarify what sections mean.
          """},
         {"role": "user", "content": prompt}
