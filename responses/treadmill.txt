@@ -1,0 +1,28 @@
+// Frame Base
+difference() {
+    cube([60, 30, 5]);  // Base of the treadmill
+    translate([5, 5, -1]) cube([50, 20, 6]);  // Hollow part
+}
+
+// Legs
+translate([0, 5, -5]) cube([5, 5, 5]);  // Front left leg
+translate([55, 5, -5]) cube([5, 5, 5]);  // Front right leg
+translate([0, 20, -5]) cube([5, 5, 5]);  // Rear left leg
+translate([55, 20, -5]) cube([5, 5, 5]);  // Rear right leg
+
+// Treadmill Belt
+translate([2, 2, 5]) cube([56, 26, 1]);  // Belt area
+
+// Console and Handles
+translate([55, 8, 5]) {
+    cube([5, 14, 5]); // Right handle base
+    translate([0, 0, 5]) cube([5, 2, 10]);   // Right handle vertical grip
+
+    cube([5, 14, 20]); // Console base
+    translate([0, 0, 20]) cube([5, 14, 1]);   // Console screen
+}
+
+translate([0, 8, 5]) {
+    cube([5, 14, 5]); // Left handle base
+    translate([0, 0, 5]) cube([5, 2, 10]);   // Left handle vertical grip
+}
