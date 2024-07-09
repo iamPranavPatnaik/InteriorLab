@@ -22,5 +22,8 @@ def interiorLab(prompt):
     response = completion.choices[0].message.content
 
     print(response)
+    with open("currentModel.scad", 'w') as file:
+        file.write(response)
 
-interiorLab("Generate a treadmill.")
+
+interiorLab("Generate a laptop.")
