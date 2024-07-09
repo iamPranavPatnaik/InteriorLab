@@ -10,6 +10,6 @@ def convert_scad_to_stl(scad_file, stl_file):
     except subprocess.CalledProcessError as e:
         print(f"An error occurred: {e}")
 
-scad_file = ''
-stl_file = ''
+scad_file = r'C:\Users\prana\Documents\GitHub\InteriorLab\currentModel.scad'
+stl_file = r'C:\Users\prana\Documents\GitHub\InteriorLab\currentModel.stl'
 convert_scad_to_stl(scad_file, stl_file)
