@@ -32,14 +32,14 @@ def interiorLab(prompt):
 
     # Create new SCAD file
     counter = scad_init.read_counter()
-    new_scad_file = f"C:/Users/prana/Documents/GitHub/InteriorLab/currentModel{counter}.scad"
+    new_scad_file = f"C:/Users/prana/Documents/GitHub/InteriorLab/generated_models/currentModel{counter}.scad"
     with open(new_scad_file, 'w') as file:
         file.truncate(0)
         file.write(response)
     
     # SCAD to STL conversion
-    scad_file = f"C:/Users/prana/Documents/GitHub/InteriorLab/currentModel{counter}.scad"
-    stl_file = f"C:/Users/prana/Documents/GitHub/InteriorLab/currentModel{counter}.stl"
+    scad_file = f"C:/Users/prana/Documents/GitHub/InteriorLab/generated_models/currentModel{counter}.scad"
+    stl_file = f"C:/Users/prana/Documents/GitHub/InteriorLab/generated_models/currentModel{counter}.stl"
     openscad_path = "C://Program Files//OpenSCAD//openscad.exe"
 
     scad_converter = SCADtoSTL()
