@@ -25,3 +25,4 @@ These instructions will help you set up and run the InteriorLab project on your 
    ```sh
    git clone https://github.com/PranavPatnaik/InteriorLab.git
    cd InteriorLab
+
