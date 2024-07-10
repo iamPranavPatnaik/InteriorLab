@@ -28,4 +28,4 @@ def interiorLab(prompt):
     print(response)
     
 
-interiorLab("Generate a couch.")
+interiorLab("Generate a bed.")

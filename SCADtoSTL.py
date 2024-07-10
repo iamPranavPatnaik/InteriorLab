@@ -22,7 +22,7 @@ def scad_to_stl(scad_file, stl_file, openscad_path):
     else:
         print(f"Successfully converted {scad_file} to {stl_file}")
 
-# Example usage
+# Files to convert
 scad_file = r"C:\Users\prana\Documents\GitHub\InteriorLab\currentModel.scad"
 stl_file = r"C:\Users\prana\Documents\GitHub\InteriorLab\currentModel.stl"
 openscad_path = r"C:\\Program Files\\OpenSCAD\\openscad.exe"  # Update this path
