@@ -13,6 +13,7 @@ def interiorLab(prompt):
          Your responses must be as accurate as possible, ensuring that all components attach correctly, look proper, follow proper OpenSCAD syntax, and are of average size. 
          You provide detailed and precise OpenSCAD code to create realistic and functional furniture models.
          Please limit measurements & parameters to 30 units per parameter MAXIMUM. That's length, width, and height.
+         Only prompts about generating FURNITURE must be accepted. If user prompts about generating anything other than furniture, respond with "ERROR! No furniture generation command detected."
          MOST IMPORTANTLY: Only send OpenSCAD code, no conversational speak here. Don't use notes like '''OpenSCAD '''. Anything like that. Just pure code and minor notes to clarify what sections mean.
          """},
         {"role": "user", "content": prompt}
@@ -26,6 +27,5 @@ def interiorLab(prompt):
         file.write(response)
 
     print(response)
-    
 
-interiorLab("Generate a bed.")
+interiorLab("Generate a human being.")
