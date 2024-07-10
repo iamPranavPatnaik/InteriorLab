@@ -2,7 +2,7 @@ import json
 import os
 
 class ScadInitializer:
-    def __init___(self, counter_file="scadCounter.JSON"):
+    def __init__(self, counter_file=r"C:\Users\prana\Documents\GitHub\InteriorLab\scadCounter.JSON"):
         self.counter_file = counter_file
 
     def read_counter(self):

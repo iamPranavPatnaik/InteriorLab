@@ -26,7 +26,7 @@ def interiorLab(prompt):
     scad_init = ScadInitializer()
     scad_init.update_counter()
 
-    with open(r"C:\Users\prana\Documents\GitHub\InteriorLab\currentModel" + scad_init.read_counter() + ".scad", 'w') as file:
+    with open(r"C:\Users\prana\Documents\GitHub\InteriorLab\currentModel" + str(scad_init.read_counter()) + ".scad", 'w') as file:
         file.truncate(0)
         file.write(response)
 

@@ -2,3 +2,4 @@
 .env
 currentModel.scad
 currentModel.stl
+/__pycache__
