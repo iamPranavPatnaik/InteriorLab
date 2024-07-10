@@ -1,4 +1,5 @@
 from openai import OpenAI
+from scadInit import ScadInitializer
 
 client = OpenAI()
 
@@ -22,10 +23,13 @@ def interiorLab(prompt):
     
     response = completion.choices[0].message.content
 
-    with open(r"C:\Users\prana\Documents\GitHub\InteriorLab\currentModel.scad", 'w') as file:
+    scad_init = ScadInitializer()
+    scad_init.update_counter()
+
+    with open(r"C:\Users\prana\Documents\GitHub\InteriorLab\currentModel" + scad_init.read_counter() + ".scad", 'w') as file:
         file.truncate(0)
         file.write(response)
 
     print(response)
 
-interiorLab("Generate a human being.")
+interiorLab("Generate a couch.")
