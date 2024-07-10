@@ -80,5 +80,7 @@ def main(stl_paths):
     interactor.Start()
 
 if __name__ == "__main__":
-    stl_paths = ["PUTFILEPATH", "PUTFILEPATH"]  
+    file_path = r"C:\Users\prana\Documents\GitHub\InteriorLab\currentModel.stl"
+    file_path2 = r"C:\Users\prana\Documents\GitHub\InteriorLab\test_stl_models\modelone.stl"
+    stl_paths = [file_path, file_path2]  
     main(stl_paths)
