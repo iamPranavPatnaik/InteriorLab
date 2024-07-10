@@ -1,5 +1,8 @@
 from openai import OpenAI
 from scadInit import ScadInitializer
+from visualization3D import CustomInteractorStyle
+from visualization3D import main
+from SCADtoSTL import SCADtoSTL
 
 client = OpenAI()
 
@@ -23,13 +26,32 @@ def interiorLab(prompt):
     
     response = completion.choices[0].message.content
 
+    # SCAD init
     scad_init = ScadInitializer()
     scad_init.update_counter()
 
-    with open(r"C:\Users\prana\Documents\GitHub\InteriorLab\currentModel" + str(scad_init.read_counter()) + ".scad", 'w') as file:
+    # Create new SCAD file
+    counter = scad_init.read_counter()
+    new_scad_file = f"C:/Users/prana/Documents/GitHub/InteriorLab/currentModel{counter}.scad"
+    with open(new_scad_file, 'w') as file:
         file.truncate(0)
         file.write(response)
+    
+    # SCAD to STL conversion
+    scad_file = f"C:/Users/prana/Documents/GitHub/InteriorLab/currentModel{counter}.scad"
+    stl_file = f"C:/Users/prana/Documents/GitHub/InteriorLab/currentModel{counter}.stl"
+    openscad_path = "C://Program Files//OpenSCAD//openscad.exe"
+
+    scad_converter = SCADtoSTL()
+    scad_converter.scad_to_stl(scad_file, stl_file, openscad_path)
+
+    # 3D visualization
+    visualizer = CustomInteractorStyle(renderer="", actors="")
+    stl_paths = [stl_file]
+    main(stl_paths)
 
     print(response)
 
 interiorLab("Generate a couch.")
+
+

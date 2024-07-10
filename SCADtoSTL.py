@@ -2,7 +2,7 @@ import subprocess
 import os
 
 class SCADtoSTL:
-    def scad_to_stl(scad_file, stl_file, openscad_path):
+    def scad_to_stl(self, scad_file, stl_file, openscad_path):
         """
         Convert a .scad file to a .stl file using OpenSCAD.
 
@@ -22,11 +22,3 @@ class SCADtoSTL:
             print(f"Error: {result.stderr}")
         else:
             print(f"Successfully converted {scad_file} to {stl_file}")
-
-    # Files to convert
-    scad_file = r"C:\Users\prana\Documents\GitHub\InteriorLab\currentModel.scad"
-    stl_file = r"C:\Users\prana\Documents\GitHub\InteriorLab\currentModel.stl"
-    openscad_path = r"C:\\Program Files\\OpenSCAD\\openscad.exe"  # Update this path
-
-    # Convert .scad to .stl
-    scad_to_stl(scad_file, stl_file, openscad_path)
