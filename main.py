@@ -3,11 +3,13 @@ from gui import GUI
 from scadInit import ScadInitializer
 from visualization3D import CustomInteractorStyle
 from visualization3D import main as vis_main
+from accessPrevPrompts import PromptMemory
 from SCADtoSTL import SCADtoSTL
 
 client = OpenAI()
 
 def generate_3d_model(user_message):
+    memory = PromptMemory()
     completion = client.chat.completions.create(
         model="gpt-4-turbo",
         messages=[
@@ -18,14 +20,21 @@ def generate_3d_model(user_message):
             Your responses must be as accurate as possible, ensuring that all components attach correctly, look proper, follow proper OpenSCAD syntax, and are of average size. 
             You provide detailed and precise OpenSCAD code to create realistic and functional furniture models.
             Please limit measurements & parameters to 30 units per parameter MAXIMUM. That's length, width, and height.
-            Only prompts about generating FURNITURE must be accepted. If user prompts about generating anything other than furniture, respond with "ERROR! No furniture generation command detected."
-            MOST IMPORTANTLY: Only send OpenSCAD code, no conversational speak here. Don't use notes like '''OpenSCAD '''. Anything like that. Just pure code and minor notes to clarify what sections mean.
+            Only prompts about generating FURNITURE must be accepted. If user prompts about generating anything other than furniture, respond with "ERROR! No furniture generation command detected." 
+            
+            """
+            +
+            "Grant users the ability to fix certain aspects of the code you output. If the user refers to anything you did wrong, you will fix it in OpenSCAD. Refer to their most recent prompt in " + memory.read_prompts() + " and your most recent response in " + memory.read_responses() + "."
+            """
+             MOST IMPORTANTLY: Only send OpenSCAD code, no conversational speak here. Don't use notes like '''OpenSCAD '''. Anything like that. Just pure code and minor notes to clarify what sections mean.
             """},
             {"role": "user", "content": user_message}
         ]
     )
     
     response = completion.choices[0].message.content
+    memory.update_prompts(user_message)
+    memory.update_responses(response)
     
     print(response)
 
