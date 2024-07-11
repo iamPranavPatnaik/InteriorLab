@@ -1,4 +1,5 @@
 from tkinter import *
+import threading
 
 BG_GRAY = "#ABB2B9"
 BG_COLOR = "#17202A"
@@ -9,8 +10,9 @@ FONT_BOLD = "Helvetica 13 bold"
 
 class GUI:
     
-    def __init__(self):
+    def __init__(self, generate_model_callback):
         self.window = Tk()
+        self.generate_model_callback = generate_model_callback
         self._setup_main_window()
         
     def run(self):
@@ -56,10 +58,15 @@ class GUI:
         send_button = Button(bottom_label, text="Send", font=FONT_BOLD, width=20, bg=BG_GRAY,
                              command=lambda: self._on_enter_pressed(None))
         send_button.place(relx=0.77, rely=0.008, relheight=0.06, relwidth=0.22)
-     
-    def _on_enter_pressed(self, event):
+    
+    def get_message(self):
         msg = self.msg_entry.get()
+        return msg
+    
+    def _on_enter_pressed(self, event):
+        msg = self.get_message()
         self._insert_message(msg, "You")
+        threading.Thread(target=self.generate_model_callback, args=(msg,)).start()
         
     def _insert_message(self, msg, sender):
         if not msg:
@@ -70,17 +77,11 @@ class GUI:
         self.text_widget.configure(state=NORMAL)
         self.text_widget.insert(END, msg1)
         self.text_widget.configure(state=DISABLED)
-        
-        msg2 = f"InteriorAssistant: nice\n\n"
-        self.text_widget.configure(state=NORMAL)
-        self.text_widget.insert(END, msg2)
-        self.text_widget.configure(state=DISABLED)
-        
         self.text_widget.see(END)
-             
         
 if __name__ == "__main__":
-    gui = GUI()
+    def dummy_generate_model_callback(message):
+        print(f"Generate model for: {message}")
+    
+    gui = GUI(dummy_generate_model_callback)
     gui.run()
-
-
